@@ -4,7 +4,9 @@ composer.lock
 .phpunit.result.cache
 /vendor/
 /node_modules/
-/resources/dist/
+/resources/dist/*
+!/resources/dist/build
+!/resources/dist/build/**
 /.phpunit.result.cache
 .env
 .DS_Store
