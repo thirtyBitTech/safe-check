@@ -540,7 +540,7 @@ export default {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             // Statamic CP should have CSRF token available in the page.
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content'),
+            'X-CSRF-TOKEN': Statamic.$config.csrfToken,
           },
           credentials: 'same-origin',
           body: JSON.stringify({}),
@@ -592,9 +592,7 @@ truncateUrl(url, max = 70) {
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    'X-CSRF-TOKEN': document
-      .querySelector('meta[name="csrf-token"]')
-      ?.getAttribute('content'),
+    'X-CSRF-TOKEN': Statamic.$config.csrfToken,
   },
   credentials: 'same-origin',
   body: JSON.stringify({
