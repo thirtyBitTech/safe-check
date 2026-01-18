@@ -1,0 +1,69 @@
+{
+  "name": "thirtybittech/safe-check",
+  "type": "statamic-addon",
+  "description": "A Statamic control panel addon that scans Composer dependencies for known security vulnerabilities.",
+  "keywords": [
+    "statamic",
+    "statamic-addon",
+    "security",
+    "vulnerability",
+    "composer",
+    "dependency-scanning",
+    "osv"
+  ],
+  "homepage": "https://github.com/thirtybittech/safe-check",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "ThirtyBitTech",
+      "email": "support@thirtybittech.com",
+      "role": "Developer"
+    }
+  ],
+
+  "require": {
+    "php": "^8.1",
+    "statamic/cms": "^5.0",
+    "illuminate/support": "^11.0"
+  },
+
+  "require-dev": {
+    "orchestra/testbench": "^9.0",
+    "phpunit/phpunit": "^10.0"
+  },
+
+  "autoload": {
+    "psr-4": {
+      "Thirtybittech\\SafeCheck\\": "src/"
+    }
+  },
+
+  "autoload-dev": {
+    "psr-4": {
+      "Thirtybittech\\SafeCheck\\Tests\\": "tests/"
+    }
+  },
+
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pixelfear/composer-dist-plugin": true
+    }
+  },
+
+  "extra": {
+    "statamic": {
+      "name": "Safe Check",
+      "handle": "safe-check",
+      "description": "Scan Composer dependencies for known security vulnerabilities directly from the Statamic Control Panel."
+    },
+    "laravel": {
+      "providers": [
+        "Thirtybittech\\SafeCheck\\ServiceProvider"
+      ]
+    }
+  },
+
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
