@@ -38,6 +38,17 @@ Scan your project’s `composer.lock` file and identify known vulnerabilities us
 
 ---
 
+## Installation
+
+Safe Check is installed like any other Statamic addon.
+
+### 1. Require the package via Composer
+
+```bash
+composer require thirtybittech/safe-check
+```
+---
+
 ### 🧠 Plain-English Explanations
 
 Safe Check doesn’t just list vulnerabilities — it explains them when they are available.
