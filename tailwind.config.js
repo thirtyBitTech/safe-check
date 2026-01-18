@@ -1,6 +1,15 @@
 module.exports = {
-    content: [
-        './resources/js/components/**/*.vue',
-        './resources/views/widgets/**/*.blade.php',
-    ]
+  darkMode: 'class',
+
+  content: [
+    './resources/**/*.vue',
+    './resources/**/*.js',
+    './resources/**/*.blade.php',
+  ],
+
+  theme: {
+    extend: {},
+  },
+
+  plugins: [],
 }
