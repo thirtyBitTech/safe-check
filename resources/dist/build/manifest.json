@@ -1,18 +1,18 @@
 {
   "resources/css/cp.css": {
-    "file": "assets/cp-2caef7f4.css",
+    "file": "assets/cp-f16c0e35.css",
     "isEntry": true,
     "src": "resources/css/cp.css"
   },
   "resources/js/cp.css": {
-    "file": "assets/cp-d2598f6b.css",
+    "file": "assets/cp-d03840ce.css",
     "src": "resources/js/cp.css"
   },
   "resources/js/cp.js": {
     "css": [
-      "assets/cp-d2598f6b.css"
+      "assets/cp-d03840ce.css"
     ],
-    "file": "assets/cp-e6e6c2bc.js",
+    "file": "assets/cp-5210cfd8.js",
     "isEntry": true,
     "src": "resources/js/cp.js"
   }

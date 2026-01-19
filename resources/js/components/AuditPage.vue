@@ -530,6 +530,8 @@ export default {
     },
 
     async runScan() {
+
+      
       this.loading = true;
       this.error = null;
 
@@ -540,7 +542,7 @@ export default {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             // Statamic CP should have CSRF token available in the page.
-            'X-CSRF-TOKEN': Statamic.$config.csrfToken,
+            'X-CSRF-TOKEN': this.getCsrfToken(),
           },
           credentials: 'same-origin',
           body: JSON.stringify({}),
@@ -558,6 +560,8 @@ export default {
         }
 
         this.scan = data;
+        this.$toast.success('Dependency scan completed successfully.');
+
       } catch (e) {
         this.error = 'Scan failed due to a network or server error.';
       } finally {
@@ -573,6 +577,27 @@ export default {
     return '';
   }
 },
+
+getCsrfToken() {
+  // Statamic 6 (Blade-injected, stable)
+  if (window.StatamicConfig?.csrfToken) {
+    return window.StatamicConfig.csrfToken;
+  }
+
+  // Statamic 5 (legacy CP runtime config)
+  if (window.Statamic?.$config?.csrfToken) {
+    return window.Statamic.$config.csrfToken;
+  }
+
+  // Fallback: Laravel default (in case CP changes again)
+  const meta = document.querySelector('meta[name="csrf-token"]');
+  if (meta) {
+    return meta.getAttribute('content');
+  }
+
+  throw new Error('CSRF token not found');
+},
+
 
 truncateUrl(url, max = 70) {
   if (!url) return '';
@@ -592,7 +617,7 @@ truncateUrl(url, max = 70) {
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    'X-CSRF-TOKEN': Statamic.$config.csrfToken,
+    'X-CSRF-TOKEN': this.getCsrfToken(),
   },
   credentials: 'same-origin',
   body: JSON.stringify({
