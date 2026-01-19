@@ -4,6 +4,8 @@ namespace Thirtybittech\SafeCheck;
 
 use Statamic\Providers\AddonServiceProvider;
 use Statamic\Facades\CP\Nav;
+use Statamic\Facades\Permission;
+
 
 class ServiceProvider extends AddonServiceProvider
 {
@@ -30,6 +32,7 @@ class ServiceProvider extends AddonServiceProvider
     public function bootAddon()
     {
         $this->extendNavigation();
+        $this->registerPermissions();
     }
 
     protected function extendNavigation()
@@ -40,6 +43,18 @@ class ServiceProvider extends AddonServiceProvider
                 ->icon('lock')
                 ->route('safe-check.index')
                 ->can('safe-check view');
+        });
+    }
+
+   protected function registerPermissions(): void
+    {
+        Permission::extend(function () {
+            // handle, label
+            Permission::group('safe-check', 'Safe Check', function () {
+                Permission::register('safe-check view')->label('View results');
+                Permission::register('safe-check run')->label('Run scan');
+                Permission::register('safe-check export')->label('Export report');
+            });
         });
     }
 }
